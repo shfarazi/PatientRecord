@@ -40,7 +40,7 @@ namespace PatientRecord
                         var emailAddress = Console.ReadLine();
 
                         Console.WriteLine("Birth Date:");
-                        var birthDate = Console.ReadLine();
+                        var birthDate = DateTime.Parse(Console.ReadLine());
 
 
                         var conditions = Enum.GetNames(typeof(Condition));
@@ -48,7 +48,7 @@ namespace PatientRecord
                         {
                             Console.WriteLine($"{i + 1}.{conditions[i]}");
                         }
-                        Console.Write("Select a condition:");
+                        Console.WriteLine("Select a condition:");
                         int condition;
                         if (!int.TryParse(Console.ReadLine(), out condition))
                         {
@@ -61,7 +61,7 @@ namespace PatientRecord
                             break;
                         }
 
-                        Console.Write("Invoice:");
+                        Console.WriteLine("Balance:");
                         var balance = Convert.ToDecimal(Console.ReadLine());
                         try
                         {
@@ -95,7 +95,7 @@ namespace PatientRecord
                         var accountNumber = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Invoice amount:");
                         var invoiceAmount = Convert.ToDecimal(Console.ReadLine());
-                        Clinic.Invoice(accountNumber, invoiceAmount);
+                        Clinic.Charge(accountNumber, invoiceAmount);
                         break;
                     case "3":
                         PrintAllPatient();
