@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientRecord", "PatientRecord.csproj", "{28EA6EDF-71A5-4DA9-8EB7-E84CFFAE0664}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicApp.UI", "..\ClinicApp.UI\ClinicApp.UI.csproj", "{303618C3-FA3F-48A6-B9CA-BA4462175118}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicApp.UI.Tests", "ClinicApp.UI.Tests\ClinicApp.UI.Tests.csproj", "{5962083A-48CF-4AA7-B986-D9B12397D79D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{28EA6EDF-71A5-4DA9-8EB7-E84CFFAE0664}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28EA6EDF-71A5-4DA9-8EB7-E84CFFAE0664}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28EA6EDF-71A5-4DA9-8EB7-E84CFFAE0664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303618C3-FA3F-48A6-B9CA-BA4462175118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303618C3-FA3F-48A6-B9CA-BA4462175118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303618C3-FA3F-48A6-B9CA-BA4462175118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303618C3-FA3F-48A6-B9CA-BA4462175118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5962083A-48CF-4AA7-B986-D9B12397D79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5962083A-48CF-4AA7-B986-D9B12397D79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5962083A-48CF-4AA7-B986-D9B12397D79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5962083A-48CF-4AA7-B986-D9B12397D79D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

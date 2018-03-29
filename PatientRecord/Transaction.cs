@@ -17,13 +17,24 @@ namespace PatientRecord
     public class Transaction
     {
         [Key]
+        [Display(Name = "Transaction Id")]
         public int TransactionId { get; set; }
+
+        [Display(Name = "Transaction Date")]
         public DateTime TransactionDate { get; set; }
+
+        [Display(Name = "Transaction Amount")]
         public decimal TransactionAmount { get; set; }
+
         public string Description { get; set; }
+
+        [Display(Name = "Transaction Type")]
         public TypesOfTransaction TransactionType { get; set; }
+
         [ForeignKey("Patient")]
+        [Display(Name = "Chart Number")]
         public int ChartNumber { get; set; }
+
         public virtual Patient Patient { get; set; }
     }
 }

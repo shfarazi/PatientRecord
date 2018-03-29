@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PatientRecord
 {
-    static class Clinic
+    public static class Clinic
     {
         private static ClinicModel db = new ClinicModel();
 
@@ -23,12 +23,37 @@ namespace PatientRecord
                 Condition = condition,
             };
 
-            if (balance > 0)
-                Patient.Charge(balance);
-
             db.Patients.Add(Patient);
             db.SaveChanges();
+
+            ChargeByCondition(condition, Patient);
+
             return Patient;
+        }
+
+        private static void ChargeByCondition(Condition condition, Patient Patient)
+        {
+            if (condition == Condition.Healthy)
+                Charge(Patient.ChartNumber, 350);
+
+            if (condition == Condition.Periodontal)
+                Charge(Patient.ChartNumber, 800);
+
+            if (condition == Condition.Restorative)
+                Charge(Patient.ChartNumber, 500);
+
+            if (condition == Condition.Prostodontics)
+                Charge(Patient.ChartNumber, 1800);
+
+            if (condition == Condition.Endodontic)
+                Charge(Patient.ChartNumber, 1200);
+
+            if (condition == Condition.OralSurgery)
+                Charge(Patient.ChartNumber, 2000);
+
+            if (condition == Condition.Orthodontics)
+                Charge(Patient.ChartNumber, 5000);
+
         }
 
         public static Patient CreatePatientRecord(Patient patient)
@@ -72,7 +97,7 @@ namespace PatientRecord
             {
                 TransactionDate = DateTime.Now,
                 TransactionAmount = amount,
-                Description = "Branch deposit",
+                Description = "Office charge",
                 TransactionType = TypesOfTransaction.Invoice,
                 ChartNumber = Patient.ChartNumber
             };
@@ -88,7 +113,7 @@ namespace PatientRecord
             {
                 TransactionDate = DateTime.Now,
                 TransactionAmount = amount,
-                Description = "Branch withdraw",
+                Description = "Online payment",
                 TransactionType = TypesOfTransaction.Payment,
                 ChartNumber = Patient.ChartNumber
             };
@@ -97,16 +122,23 @@ namespace PatientRecord
 
         }
 
-        public static void EditPatient(Patient Patient)
+        public static void EditPatient(Patient patient)
         {
-            var oldPatient = GetPatientByPatientNumber(Patient.ChartNumber);
-            oldPatient.EmailAddress = Patient.EmailAddress;
-            oldPatient.Condition = Patient.Condition;
-            oldPatient.FirstName = Patient.FirstName;
-            oldPatient.LastName = Patient.LastName;
+            var oldPatient = GetPatientByPatientNumber(patient.ChartNumber);
+            var oldCondition = oldPatient.Condition;
+
+            oldPatient.Condition = patient.Condition;
+            oldPatient.FirstName = patient.FirstName;
+            oldPatient.LastName = patient.LastName;
+            oldPatient.BirthDate = patient.BirthDate;
 
             db.Entry(oldPatient).CurrentValues.SetValues(oldPatient);
             db.SaveChanges();
+
+            if (oldCondition != patient.Condition)
+            {
+                ChargeByCondition(patient.Condition, oldPatient);
+            }
         }
     }
 }

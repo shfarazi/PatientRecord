@@ -22,21 +22,35 @@ namespace PatientRecord
     {
 
         [Key]
-        public int ChartNumber { get; private set; }
+        public int ChartNumber { get; set; }
 
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Required]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
 
+        [Display(Name = "Birth Date ")]
+        [DataType (DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime BirthDate { get; set; }
 
-        public DateTime CreatedDate { get; private set; }
+        [Display(Name = "Created Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime CreatedDate { get; set; }
 
+        [Required]
+        [Display(Name = "Condition")]
         public Condition Condition { get; set; }
 
-        public decimal AccountBalance { get; private set; }
+        [Display(Name = "Account Balance")]
+        [DataType (DataType.Currency)]
+        public decimal AccountBalance { get; set; }
 
         public Patient()
         {
